@@ -53,7 +53,7 @@ The application follows a microservices-based architecture with the following co
 
 ---
 
-## 👥 Authors <a name="authors"></a>
+## 👥 Author <a name="author"></a>
 
 👤 **Addis Tsega **
 
