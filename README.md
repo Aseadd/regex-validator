@@ -1,3 +1,4 @@
+![UI](https://github.com/user-attachments/assets/f2150211-78f3-42fb-82d1-8117000d304d)
 # 🧪 Real-Time Regex Validator
 
 A full-stack real-time regex validator built with **React**, **NestJS**, **Kafka**, **Redis**, **MongoDB**, and **Docker Compose**. This application enables users to validate inputs against regular expressions and receive live feedback on their validation status.
