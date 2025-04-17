@@ -53,12 +53,27 @@ The application follows a microservices-based architecture with the following co
 
 ---
 
+## 👥 Authors <a name="authors"></a>
+
+👤 **Addis Tsega **
+
+- GitHub: [Aseadd](https://github.com/Aseadd)
+- Twitter: [@AdaTsega](https://twitter.com/AdaTsega)
+- LinkedIn: [addis-tsega](https://www.linkedin.com/in/addis-tsega/)
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
 ---
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 📄 License
+<!-- LICENSE -->
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./MIT.md) licensed.
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
