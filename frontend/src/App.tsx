@@ -1,8 +1,11 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { io, Socket } from "socket.io-client";
+import { io, type Socket } from "socket.io-client";
 import JobForm from "./components/JobForm";
 import JobList from "./components/JobList";
+import "./styles.css"; // Import the CSS file
 
 interface Job {
   _id: string;
@@ -11,10 +14,11 @@ interface Job {
   status: "Validating" | "Valid" | "Invalid";
 }
 
-interface JobUpdateEvent {
-  jobId: string;
-  status: "Validating" | "Valid" | "Invalid";
-}
+const statusMap: Record<string, Job["status"]> = {
+  VALID: "Valid",
+  INVALID: "Invalid",
+  VALIDATING: "Validating",
+};
 
 function App() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -46,13 +50,17 @@ function App() {
       console.log("❌ Disconnected from WebSocket");
     });
 
-    socket.on("jobUpdate", (data: JobUpdateEvent) => {
-      console.log("📡 Received job update:", data);
-      setJobs((prevJobs) =>
-        prevJobs.map((job) =>
-          job._id === data.jobId ? { ...job, status: data.status } : job
-        )
-      );
+    socket.onAny((event, data) => {
+      const normalizedStatus =
+        statusMap[data.status.toUpperCase()] ?? "Validating";
+      if (event.startsWith("job:update:")) {
+        console.log("📡 Received job update:", data);
+        setJobs((prevJobs) =>
+          prevJobs.map((job) =>
+            job._id === data.jobId ? { ...job, status: normalizedStatus } : job
+          )
+        );
+      }
     });
 
     return () => {

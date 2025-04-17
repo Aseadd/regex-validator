@@ -1,49 +1,81 @@
+import { CheckCircle, AlertCircle, Clock } from "lucide-react";
+import type { ReactNode } from "react";
+
 interface Job {
   _id: string;
   input: string;
   regexPattern: string;
-  status: string;
+  status: "Validating" | "Valid" | "Invalid";
 }
 
-function JobList({ jobs }: { jobs: Job[] }) {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Valid":
-        return "green";
-      case "Invalid":
-        return "red";
-      default:
-        return "orange";
-    }
-  };
+interface JobListProps {
+  jobs: Job[];
+}
+
+const StatusIcon = ({ status }: { status: Job["status"] }): ReactNode => {
+  switch (status) {
+    case "Valid":
+      return <CheckCircle className="status-icon" size={18} />;
+    case "Invalid":
+      return <AlertCircle className="status-icon" size={18} />;
+    case "Validating":
+      return <Clock className="status-icon" size={18} />;
+    default:
+      return null;
+  }
+};
+
+const JobList = ({ jobs }: JobListProps) => {
+  if (jobs.length === 0) {
+    return (
+      <div className="empty-state">
+        <div className="empty-icon">📋</div>
+        <h3>No validation jobs yet</h3>
+        <p>Submit a regular expression above to see results here</p>
+      </div>
+    );
+  }
 
   return (
     <div className="job-list">
-      <h2>Job History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Input</th>
-            <th>Regex Pattern</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jobs.map((job) => (
-            <tr key={job._id}>
-              <td>{job._id.substring(18)}</td>
-              <td>{job.input}</td>
-              <td>{job.regexPattern}</td>
-              <td style={{ color: getStatusColor(job.status) }}>
+      <h2 className="list-title">Validation Results ({jobs.length})</h2>
+
+      {jobs.map((job) => (
+        <div
+          key={job._id}
+          className={`job-item status-${job.status.toLowerCase()}`}
+        >
+          <div className="job-status-indicator"></div>
+
+          <div className="job-content">
+            <div className="job-header">
+              <div className="job-input-wrapper">
+                <code className="job-input">{job.input}</code>
+              </div>
+              <span
+                className={`status-badge status-${job.status.toLowerCase()}`}
+              >
+                <StatusIcon status={job.status} />
                 {job.status}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </span>
+            </div>
+
+            {job.regexPattern && (
+              <div className="job-details">
+                <div className="job-pattern-label">Pattern:</div>
+                <code className="job-pattern">{job.regexPattern}</code>
+              </div>
+            )}
+
+            {/* Display the Job ID */}
+            <div className="job-id">
+              <strong>ID:</strong> {job._id}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default JobList;

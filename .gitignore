@@ -1,0 +1,15 @@
+# .gitignore in the root of your repo
+backend/api-gateway/node_modules/
+backend/validation-service/node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/.env.development
+frontend/.env.test
+
+
+node_modules/
