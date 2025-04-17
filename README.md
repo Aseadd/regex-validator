@@ -55,7 +55,7 @@ The application follows a microservices-based architecture with the following co
 
 ## 👥 Author <a name="author"></a>
 
-👤 **Addis Tsega **
+Addis Tsega
 
 - GitHub: [Aseadd](https://github.com/Aseadd)
 - Twitter: [@AdaTsega](https://twitter.com/AdaTsega)
