@@ -48,6 +48,9 @@ const JobList = ({ jobs }: JobListProps) => {
           <div className="job-status-indicator"></div>
 
           <div className="job-content">
+            <div className="job-id">
+              <strong>ID:</strong> {job._id}
+            </div>
             <div className="job-header">
               <div className="job-input-wrapper">
                 <code className="job-input">{job.input}</code>
@@ -66,11 +69,6 @@ const JobList = ({ jobs }: JobListProps) => {
                 <code className="job-pattern">{job.regexPattern}</code>
               </div>
             )}
-
-            {/* Display the Job ID */}
-            <div className="job-id">
-              <strong>ID:</strong> {job._id}
-            </div>
           </div>
         </div>
       ))}
