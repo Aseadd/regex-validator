@@ -48,6 +48,8 @@ Event Handling
 - Dead Letter Queue: Planned for failed validations
 
 ## 📸 Demo
+![Demo video](https://github.com/user-attachments/assets/3d2f1a71-6712-444a-bb79-c161d1333570)
+
 ![screencapture-localhost-61234-2025-04-18-13_03_30](https://github.com/user-attachments/assets/2bd7f422-4140-4057-822b-fdbc76023f6e)
 ![screencapture-localhost-61234-2025-04-18-13_16_53](https://github.com/user-attachments/assets/767293b7-feff-4664-a864-ce747f490fc0)
 
