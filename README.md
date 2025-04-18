@@ -50,7 +50,7 @@ The application follows a microservices-based architecture with the following co
     docker-compose up --build
     ```
 
-3. Access the application at `[http://localhost:61234](http://localhost:61234/)`.
+3. Access the application at `http://localhost:61234`.
 
 ---
 
