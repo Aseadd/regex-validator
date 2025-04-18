@@ -60,7 +60,7 @@ services:
       - KAFKA_BROKER=kafka:29092
       - REDIS_HOST=redis
       - REGEX_PATTERN=${REGEX_PATTERN:-^[A-Za-z0-9]+$}
-      - VALIDATION_DELAY=${VALIDATION_DELAY:-1000}
+      - VALIDATION_DELAY=${VALIDATION_DELAY:-2000}
     depends_on:
       - mongodb
       - kafka
@@ -78,7 +78,7 @@ services:
       - KAFKA_BROKER=kafka:29092
       - REDIS_HOST=redis
       - REGEX_PATTERN=${REGEX_PATTERN:-^[A-Za-z0-9]+$}
-      - VALIDATION_DELAY=${VALIDATION_DELAY:-1000}
+      - VALIDATION_DELAY=${VALIDATION_DELAY:-2000}
     depends_on:
       - mongodb
       - kafka

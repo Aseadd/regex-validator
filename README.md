@@ -34,7 +34,7 @@ Update Propagation:
 - Service publishes update event to Redis channel
 - API Gateway subscribes to Redis channels
 - WebSocket connection pushes updates to frontend
--  Input and regex submission for validation 
+
 
 ---
 ## System Reliability
@@ -42,7 +42,6 @@ Fault Tolerance Strategies
 - Kafka: Message persistence with replication factor 1
 - MongoDB: Automatic retry logic in services
 - Redis: Cache fallback for recent updates
-- Docker: Health checks and restart policies
 Event Handling
 - At-Least-Once Delivery: Kafka consumer offsets
 - Idempotent Operations: MongoDB upserts
@@ -92,7 +91,7 @@ Configuration Management
 ##  ⚙ Configuration
 - Environment variables (set in docker-compose.yml):
 - REGEX_PATTERN: Validation pattern (default: ^[A-Za-z0-9]+$)
-- VALIDATION_DELAY: Processing delay in ms (default: 1000)
+- VALIDATION_DELAY: Processing delay in ms (default: 2000)
 - Service connection strings for development
 
 ## 🛠️ Setup Instructions

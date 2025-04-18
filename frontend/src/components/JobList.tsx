@@ -26,7 +26,7 @@ const StatusIcon = ({ status }: { status: Job["status"] }): ReactNode => {
 };
 
 const JobList = ({ jobs }: JobListProps) => {
-  if (jobs.length === 0) {
+  if (jobs?.length === 0) {
     return (
       <div className="empty-state">
         <div className="empty-icon">📋</div>
@@ -40,7 +40,7 @@ const JobList = ({ jobs }: JobListProps) => {
     <div className="job-list">
       <h2 className="list-title">Validation Results ({jobs.length})</h2>
 
-      {jobs.map((job) => (
+      {jobs?.map((job) => (
         <div
           key={job._id}
           className={`job-item status-${job.status.toLowerCase()}`}
