@@ -1,21 +1,52 @@
 
 # 🧪 Real-Time Regex Validator
 
-A full-stack real-time regex validator built with **React**, **NestJS**, **Kafka**, **Redis**, **MongoDB**, and **Docker Compose**. This application enables users to validate inputs against regular expressions and receive live feedback on their validation status.
-
+A full-stack real-time regex validator built with **React**, **NestJS**, **Kafka**, **Redis**, **MongoDB**, and **Docker Compose**. A distributed system that validates user inputs against configurable regular expressions with real-time feedback. The application demonstrates event-driven architecture patterns, microservice communication, and real-time update propagation.
 ---
 
-## 🚀 Features
+## Workflow:
 
-- 🔍 Input and regex submission for validation
-- ⚙️ Background service for regex validation
-- 🔄 Real-time feedback via WebSocket
-- 📦 Microservice communication powered by Kafka
-- 💾 Persistent storage with MongoDB
-- 🔔 Update propagation using Redis pub/sub
-- 🐳 Easy local setup with Docker Compose
+- User submits input via the frontend
+
+- API Gateway receives the request and creates a validation job
+
+- Validation Service processes jobs asynchronously via Kafka
+
+- Results are stored in MongoDB and propagated via Redis Pub/Sub
+
+- Frontend receives real-time updates through WebSocket
+
+## ⚡ Real-Time Update Mechanism
+Initial Request:
+
+- Frontend POSTs to API Gateway
+- Gateway creates job record in MongoDB
+- Job event published to Kafka
+  
+ Validation Processing:
+
+- Validation Service consumes Kafka events
+- Processes regex validation with configurable delay
+- Updates job status in MongoDB
+  
+Update Propagation:
+
+- Service publishes update event to Redis channel
+- API Gateway subscribes to Redis channels
+- WebSocket connection pushes updates to frontend
+-  Input and regex submission for validation 
 
 ---
+## System Reliability
+Fault Tolerance Strategies
+- Kafka: Message persistence with replication factor 1
+- MongoDB: Automatic retry logic in services
+- Redis: Cache fallback for recent updates
+- Docker: Health checks and restart policies
+Event Handling
+- At-Least-Once Delivery: Kafka consumer offsets
+- Idempotent Operations: MongoDB upserts
+- Dead Letter Queue: Planned for failed validations
 
 ## 📸 Demo
 ![screencapture-localhost-61234-2025-04-18-13_03_30](https://github.com/user-attachments/assets/2bd7f422-4140-4057-822b-fdbc76023f6e)
@@ -36,6 +67,33 @@ The application follows a microservices-based architecture with the following co
 6. **Containerization**: Docker Compose for seamless deployment and local development.
 
 ---
+
+## ☁ Cloud Deployment (AWS)
+Scaling Considerations
+Frontend:
+- S3 + CloudFront for static assets
+- Auto-scaling EC2 or ECS Fargate
+API Gateway:
+- Application Load Balancer with multiple instances
+- Configured health checks
+Validation Service:
+- Kafka consumer groups for parallel processing
+- ECS Service auto-scaling based on SQS queue size
+Data Services:
+- Amazon MSK (Managed Kafka) with 3 brokers
+- ElastiCache Redis Cluster
+- DocumentDB with read replicas
+Configuration Management
+- Secrets: AWS Secrets Manager for credentials
+- Parameters: AWS Systems Manager Parameter Store
+- Infrastructure: Terraform for provisioning
+- CI/CD: CodePipeline with ECR/ECS deployments
+
+##  ⚙ Configuration
+- Environment variables (set in docker-compose.yml):
+- REGEX_PATTERN: Validation pattern (default: ^[A-Za-z0-9]+$)
+- VALIDATION_DELAY: Processing delay in ms (default: 1000)
+- Service connection strings for development
 
 ## 🛠️ Setup Instructions
 
