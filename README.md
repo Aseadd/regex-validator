@@ -18,8 +18,9 @@ A full-stack real-time regex validator built with **React**, **NestJS**, **Kafka
 ---
 
 ## 📸 Demo
+![screencapture-localhost-61234-2025-04-18-13_03_30](https://github.com/user-attachments/assets/2bd7f422-4140-4057-822b-fdbc76023f6e)
+![screencapture-localhost-61234-2025-04-18-13_16_53](https://github.com/user-attachments/assets/767293b7-feff-4664-a864-ce747f490fc0)
 
-![UI](https://github.com/user-attachments/assets/f2150211-78f3-42fb-82d1-8117000d304d)
 
 ---
 
