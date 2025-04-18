@@ -49,10 +49,12 @@ const JobList = ({ jobs }: JobListProps) => {
 
           <div className="job-content">
             <div className="job-id">
-              <strong>ID:</strong> {job._id}
+              <strong className="job-id-label">ID:</strong>
+              <code className="job-id-value">{job._id}</code>
             </div>
             <div className="job-header">
               <div className="job-input-wrapper">
+                <strong className="job-input-label">Input:</strong>
                 <code className="job-input">{job.input}</code>
               </div>
               <span
