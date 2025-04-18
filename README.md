@@ -41,7 +41,7 @@ The application follows a microservices-based architecture with the following co
 
 1. Clone the repository:
     ```bash
-    git clone https://github.comAseadd/regex-validator.git
+    git clone https://github.com/Aseadd/regex-validator.git
     cd regex-validator
     ```
 
@@ -50,7 +50,7 @@ The application follows a microservices-based architecture with the following co
     docker-compose up --build
     ```
 
-3. Access the application at `[http://localhost:6123](http://localhost:61234/)`.
+3. Access the application at `[http://localhost:61234](http://localhost:61234/)`.
 
 ---
 
